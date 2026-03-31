@@ -8,28 +8,56 @@ interface QuestionFormProps {
   onChange: (question: Question) => void;
   onRemove: () => void;
   index: number;
+  showValidationErrors: boolean;
 }
 
-export default function QuestionForm({ question, onChange, onRemove, index }: QuestionFormProps) {
+export default function QuestionForm({
+  question,
+  onChange,
+  onRemove,
+  index,
+  showValidationErrors,
+}: QuestionFormProps) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const [tagsInput, setTagsInput] = useState(question.tags.join(', '));
 
   const handleFieldChange = (field: 'pergunta' | 'tema' | 'subtema', value: string) => {
     onChange({ ...question, [field]: value });
   };
 
   const handleTagsChange = (value: string) => {
-    const tags = value.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+    setTagsInput(value);
+    const tags = value
+      .split(',')
+      .map((tag) => tag.trim())
+      .filter((tag) => tag.length > 0);
+
     onChange({ ...question, tags });
   };
 
   const handleAlternativesChange = (alternatives: typeof question.alternativas) => {
-    const correctAlternative = alternatives.find(alt => alt.correta);
+    const correctAlternative = alternatives.find((alt) => alt.correta);
     onChange({
       ...question,
       alternativas: alternatives,
       resposta_correta: correctAlternative?.letra || 'A',
     });
   };
+
+  const isPerguntaInvalid = showValidationErrors && !question.pergunta.trim();
+  const isTemaInvalid = showValidationErrors && !question.tema.trim();
+  const isSubtemaInvalid = showValidationErrors && !question.subtema.trim();
+  const isTagsInvalid = showValidationErrors && question.tags.length === 0;
+
+  const getInputClasses = (isInvalid: boolean) =>
+    `w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 text-sm ${
+      isInvalid
+        ? 'border-red-500 bg-red-50 focus:ring-red-500'
+        : 'border-gray-300 focus:ring-blue-500'
+    }`;
+
+  const getLabelClasses = (isInvalid: boolean) =>
+    `block text-sm font-medium mb-1 ${isInvalid ? 'text-red-700' : 'text-gray-700'}`;
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200">
@@ -43,9 +71,7 @@ export default function QuestionForm({ question, onChange, onRemove, index }: Qu
             size={20}
             className={`text-gray-600 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
           />
-          <h3 className="text-lg font-semibold text-gray-800">
-            Questão {index + 1}
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-800">Questao {index + 1}</h3>
         </button>
         <button
           onClick={onRemove}
@@ -59,63 +85,56 @@ export default function QuestionForm({ question, onChange, onRemove, index }: Qu
       {isExpanded && (
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Pergunta *
-            </label>
+            <label className={getLabelClasses(isPerguntaInvalid)}>Pergunta *</label>
             <textarea
               value={question.pergunta}
               onChange={(e) => handleFieldChange('pergunta', e.target.value)}
               placeholder="Digite a pergunta..."
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className={getInputClasses(isPerguntaInvalid)}
             />
           </div>
 
           <AlternativeInput
             alternatives={question.alternativas}
             onChange={handleAlternativesChange}
+            showValidationErrors={showValidationErrors}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Tema *
-              </label>
+              <label className={getLabelClasses(isTemaInvalid)}>Tema *</label>
               <input
                 type="text"
                 value={question.tema}
                 onChange={(e) => handleFieldChange('tema', e.target.value)}
                 placeholder="Ex: Sistema Muscular"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                className={getInputClasses(isTemaInvalid)}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Subtema *
-              </label>
+              <label className={getLabelClasses(isSubtemaInvalid)}>Subtema *</label>
               <input
                 type="text"
                 value={question.subtema}
                 onChange={(e) => handleFieldChange('subtema', e.target.value)}
-                placeholder="Ex: Composição do sistema muscular"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                placeholder="Ex: Composicao do sistema muscular"
+                className={getInputClasses(isSubtemaInvalid)}
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Tags *
-            </label>
+            <label className={getLabelClasses(isTagsInvalid)}>Tags *</label>
             <input
               type="text"
-              value={question.tags.join(', ')}
+              value={tagsInput}
               onChange={(e) => handleTagsChange(e.target.value)}
-              placeholder="Ex: nervo, tendão, contração"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              placeholder="Ex: nervo, tendao, contracao"
+              className={getInputClasses(isTagsInvalid)}
             />
-            <p className="text-xs text-gray-500 mt-1">Separe as tags por vírgula</p>
+            <p className="text-xs text-gray-500 mt-1">Separe as tags por virgula</p>
           </div>
         </div>
       )}

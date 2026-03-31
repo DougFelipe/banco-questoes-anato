@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import { FileDown, FileUp, Plus } from 'lucide-react';
 import { Question } from './types';
 import QuestionForm from './components/QuestionForm';
@@ -51,6 +51,7 @@ function App() {
     questions: [],
     createdAt: new Date().toISOString(),
   });
+  const [showValidationErrors, setShowValidationErrors] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -72,11 +73,13 @@ function App() {
     if (!q.subtema.trim()) return false;
     if (q.tags.length === 0) return false;
     if (!q.alternativas.every(alt => alt.texto.trim())) return false;
+    if (!q.alternativas.every(alt => alt.explicacao.trim())) return false;
     if (!q.alternativas.some(alt => alt.correta)) return false;
     return true;
   };
 
   const handleExport = () => {
+    setShowValidationErrors(true);
     const invalidQuestions = state.questions.filter(q => !validateQuestion(q));
 
     if (invalidQuestions.length > 0) {
@@ -99,6 +102,7 @@ function App() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    setShowValidationErrors(false);
   };
 
   const handleImport = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -185,6 +189,7 @@ function App() {
                 onChange={(q) => handleUpdateQuestion(index, q)}
                 onRemove={() => handleRemoveQuestion(index)}
                 index={index}
+                showValidationErrors={showValidationErrors}
               />
             ))}
           </div>

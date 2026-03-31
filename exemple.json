@@ -1,0 +1,207 @@
+{
+  "version": "v1",
+  "created_at": "2026-03-31T00:00:00.000Z",
+  "updated_at": "2026-03-31T00:00:00.000Z",
+  "questoes": [
+    {
+      "id": "osso-001",
+      "pergunta": "Qual osso protege principalmente o cerebro?",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Cranio",
+          "correta": true,
+          "explicacao": "O cranio forma a caixa craniana, que envolve e protege o encefalo."
+        },
+        {
+          "letra": "B",
+          "texto": "Esterno",
+          "correta": false,
+          "explicacao": "O esterno protege estruturas toracicas, nao o cerebro."
+        },
+        {
+          "letra": "C",
+          "texto": "Femur",
+          "correta": false,
+          "explicacao": "O femur e um osso do membro inferior."
+        },
+        {
+          "letra": "D",
+          "texto": "Patela",
+          "correta": false,
+          "explicacao": "A patela fica no joelho e nao participa da protecao do cerebro."
+        },
+        {
+          "letra": "E",
+          "texto": "Tibia",
+          "correta": false,
+          "explicacao": "A tibia e um osso da perna."
+        }
+      ],
+      "resposta_correta": "A",
+      "tema": "Sistema Esqueletico",
+      "subtema": "Ossos do Cranio",
+      "tags": ["anatomia", "ossos", "cranio"]
+    },
+    {
+      "id": "osso-002",
+      "pergunta": "Quantas vertebras cervicais existem na coluna vertebral humana?",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "5",
+          "correta": false,
+          "explicacao": "A regiao cervical nao possui 5 vertebras."
+        },
+        {
+          "letra": "B",
+          "texto": "7",
+          "correta": true,
+          "explicacao": "A coluna cervical possui 7 vertebras (C1 a C7)."
+        },
+        {
+          "letra": "C",
+          "texto": "12",
+          "correta": false,
+          "explicacao": "12 corresponde ao numero de vertebras toracicas."
+        },
+        {
+          "letra": "D",
+          "texto": "8",
+          "correta": false,
+          "explicacao": "Nao ha 8 vertebras cervicais na anatomia humana padrao."
+        },
+        {
+          "letra": "E",
+          "texto": "10",
+          "correta": false,
+          "explicacao": "10 nao corresponde ao numero de vertebras cervicais."
+        }
+      ],
+      "resposta_correta": "B",
+      "tema": "Sistema Esqueletico",
+      "subtema": "Coluna Vertebral",
+      "tags": ["anatomia", "coluna", "vertebras"]
+    },
+    {
+      "id": "osso-003",
+      "pergunta": "Em posicao anatomica, qual osso do antebraco fica do lado do polegar?",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Ulna",
+          "correta": false,
+          "explicacao": "A ulna fica mais medial, do lado do dedo minimo."
+        },
+        {
+          "letra": "B",
+          "texto": "Radio",
+          "correta": true,
+          "explicacao": "O radio fica lateralmente no antebraco, alinhado ao polegar."
+        },
+        {
+          "letra": "C",
+          "texto": "Umero",
+          "correta": false,
+          "explicacao": "O umero e o osso do braco, nao do antebraco."
+        },
+        {
+          "letra": "D",
+          "texto": "Escafoide",
+          "correta": false,
+          "explicacao": "O escafoide e um osso do carpo (punho)."
+        },
+        {
+          "letra": "E",
+          "texto": "Clavicula",
+          "correta": false,
+          "explicacao": "A clavicula pertence a cintura escapular."
+        }
+      ],
+      "resposta_correta": "B",
+      "tema": "Sistema Esqueletico",
+      "subtema": "Membro Superior",
+      "tags": ["anatomia", "antebraco", "radio"]
+    },
+    {
+      "id": "osso-004",
+      "pergunta": "Qual estrutura ossea conecta o membro inferior ao esqueleto axial?",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Escapula",
+          "correta": false,
+          "explicacao": "A escapula participa da cintura escapular, ligada ao membro superior."
+        },
+        {
+          "letra": "B",
+          "texto": "Cintura pelvica",
+          "correta": true,
+          "explicacao": "A cintura pelvica conecta os membros inferiores ao tronco."
+        },
+        {
+          "letra": "C",
+          "texto": "Patela",
+          "correta": false,
+          "explicacao": "A patela e um osso sesamoide do joelho."
+        },
+        {
+          "letra": "D",
+          "texto": "Ulna",
+          "correta": false,
+          "explicacao": "A ulna e do membro superior."
+        },
+        {
+          "letra": "E",
+          "texto": "Esterno",
+          "correta": false,
+          "explicacao": "O esterno e um osso toracico e nao conecta o membro inferior."
+        }
+      ],
+      "resposta_correta": "B",
+      "tema": "Sistema Esqueletico",
+      "subtema": "Cintura Pelvica",
+      "tags": ["anatomia", "pelve", "membro inferior"]
+    },
+    {
+      "id": "osso-005",
+      "pergunta": "Em um osso longo de um adulto, onde se encontra principalmente a medula ossea amarela?",
+      "alternativas": [
+        {
+          "letra": "A",
+          "texto": "Epifise proximal",
+          "correta": false,
+          "explicacao": "A epifise e mais relacionada a osso esponjoso e medula vermelha."
+        },
+        {
+          "letra": "B",
+          "texto": "Metafise",
+          "correta": false,
+          "explicacao": "A metafise e zona de transicao e nao o principal local da medula amarela."
+        },
+        {
+          "letra": "C",
+          "texto": "Canal medular da diafise",
+          "correta": true,
+          "explicacao": "No adulto, a medula amarela predomina no canal medular da diafise."
+        },
+        {
+          "letra": "D",
+          "texto": "Periosteo",
+          "correta": false,
+          "explicacao": "O periosteo e uma membrana externa do osso, nao local de medula."
+        },
+        {
+          "letra": "E",
+          "texto": "Cartilagem articular",
+          "correta": false,
+          "explicacao": "A cartilagem articular reveste superficies articulares."
+        }
+      ],
+      "resposta_correta": "C",
+      "tema": "Sistema Esqueletico",
+      "subtema": "Estrutura dos Ossos Longos",
+      "tags": ["anatomia", "ossos longos", "medula ossea"]
+    }
+  ]
+}
